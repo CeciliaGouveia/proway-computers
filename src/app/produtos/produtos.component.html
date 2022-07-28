@@ -1,0 +1,24 @@
+<section class="product-list">
+    <!--Para eu carregar uma lista na página, eu tenho que utilizar a diretiva "*ngFor" -->
+    <div class="product-list__card" *ngFor="let produto of produtos">
+
+        <!--Vamos adicionar o link para cada um dos produtos e, para tanto, vamos utilizar a propriedade "routerLink". Então, quando eu clicar em cima de um dos cards de produtos, eu quero que ele me mande para uma outra página com o produto que eu cliquei-->
+        <a routerLink="/produtos/{{ produto.id }}" class="product-list__link">
+            <!--Property binding-->
+            <img [src]="produto.imagem">
+            <h2 class="product-item__name">
+                <!--Interpolação de texto com a propriedade "descricao" que está dentro do objeto "produto" declarado no arquivo "produtos.ts" e importado para o arquivo "produtos.component.ts" -->
+                {{ produto.descricao }}
+            </h2>
+            <p class="product-item__price">
+                <!--Interpolação de texto com a propriedade "preco" que está dentro do objeto "produto" declarado no arquivo "produtos.ts" e importado para o arquivo "produtos.component.ts". Vamos ainda utilizar o "pipe" de "currency" para que fique no formato de preço -->
+                {{ produto.preco | currency: "BRL"}}
+            </p>
+            <p class="product-item__price-description">
+                <!--Interpolação de texto com a propriedade "descricaoPreco" que está dentro do objeto "produto" declarado no arquivo "produtos.ts" e importado para o arquivo "produtos.component.ts" -->
+                {{ produto.descricaoPreco }}
+            </p>
+            <button class="product-item__buy-button" type="button">Comprar</button>
+        </a>
+    </div>
+</section>

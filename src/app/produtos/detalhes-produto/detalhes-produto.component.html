@@ -1,0 +1,26 @@
+<section class="product__container">
+    <div class="product-image__container">
+        <!--Property binding para pegar, a partir do "id" do produto, a propriedade "imagem" do array de objetos "produto"-->
+        <img [src]="produto?.imagem">
+    </div>
+
+    <div class="product-description__container">
+        <!--Interpolação de texto para pegar, a partir do "id" do produto, a propriedade "descricao" do array de objetos "produto"-->
+        <h2 class="product__name">{{ produto?.descricao }}</h2>
+        <!--Interpolação de texto para pegar, a partir do "id" do produto, a propriedade "preco" do array de objetos "produto". Vamos ainda utilizar o "pipe" de "currency" para que fique no formato de preço -->
+        <h3 class="product__price">{{ produto?.preco | currency: "BRL" }}</h3>
+        <p>Estoque disponível:</p>
+        <label>
+            Quantidade:
+            <!--Eu quero que, quando a gente digite a quantidade de unidades de um produto, essa quantidade fique armazenada dentro de uma propriedade da classe do meu componente. Para isso faremos um "two-way data binding"-->
+            <input type="number" [(ngModel)]="quantidade" min="1">
+            unidades (s)
+        </label>
+        <p class="product__avaiability">
+            <!--Interpolação de texto para pegar, a partir do "id" do produto, a propriedade "quantidadeEstoque" do array de objetos "produto"-->
+            {{ produto?.quantidadeEstoque }} unidade(s) em estoque
+        </p>
+        <!--Vamos fazer um "event binding" para atrelar o evento de "click" à execução do método "adicionarAoCarrinho"-->
+        <button (click)="adicionarAoCarrinho()">Adicionar ao carrinho</button>
+    </div>
+</section>

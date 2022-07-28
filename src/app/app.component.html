@@ -1,0 +1,10 @@
+<div class="container">
+  <!--Importando meu componente "header" para o projeto principal-->
+  <app-header></app-header>
+
+  <!--Vamos injetar as rotas que criamos no "app-routing.module.ts". Dessa forma, todas as páginas que eu acrescemtar no "router" aparecerão entre o "header" e o "footer" -->
+  <router-outlet></router-outlet>
+</div>
+
+<!--Importando meu componente "footer" para o projeto principal. Eu vou colocá-lo fora da div "container" porque a div "container" tem um "padding" dentro dela, o que atrapalha no "footer" pois eu quero que o "footer" ocupe todo o tamanho da tela -->
+<app-footer></app-footer>

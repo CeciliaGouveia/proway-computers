@@ -1,0 +1,56 @@
+<header class="main-header">
+
+    <!--Logo do site-->
+    <h1 class="main-header__title">
+        <span class="main-header__title--blue">ProWay</span><span class="main-header__title--orange">Computers</span>
+    </h1>
+
+    <!--Vamos dar o espaçamento correto entre nossa barra de pesquisa e o nosso menu-->
+    <div class="container-menu">
+
+        <!--Barra de navegação-->
+        <nav class="main-header__menu">
+            <ul>
+                <li>
+                    <a href="http://localhost:4200/produtos">Produtos</a>
+                </li>
+                <li>
+                    <a href="http://localhost:4200/carrinho">
+                        <!--Ícone de carrinho-->
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        Carrinho
+
+                        <!--Vamos fazer uma interpolação de texto com o serviço "carrinhoService" junto com o método dele chamado "obtemCarrinho()" e, como esse método me retorna um vetor, eu quero que sejam exibidas a quantidade de itens desse vetor (conseguimos fazer dessa forma, chamando diretamente o serviço "carrinhoService" e o método dele, pois nós colocamos esse serviço "carrinhoService" de maqneira pública no construtor da nossa classe "HeaderComponent")-->
+                        <span class="badge-carrinho">{{ carrinhoService.obtemCarrinho().length }}</span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="http://localhost:4200/contato">Contato</a>
+                </li>
+                <li>
+                    <!--Ícone do facebook-->
+                    <a><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+                <li>
+                    <!--Ícone do instagram-->
+                    <a><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                    <!--Ícone do twitter-->
+                    <a><i class="fa-brands fa-twitter"></i></a>
+                </li>
+                <li>
+                    <!--Ícone do linkedin-->
+                    <a><i class="fa-brands fa-linkedin-in"></i></a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!--Vamos adicionar o componente da nossa "search bar"-->
+        <app-barra-pesquisa></app-barra-pesquisa>
+
+    </div>
+
+</header>

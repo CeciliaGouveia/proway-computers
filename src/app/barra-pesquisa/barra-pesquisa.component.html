@@ -1,0 +1,7 @@
+<!--Vamos adicionar uma "search bar" para procurarmos elementos que estão na página-->
+<!--Vamos ainda fazer um "event binding" com a diretiva ngSubmit que executará a função "pesquisar" quando o ícone de lupa for clicado -->
+<form class="search-form" (ngSubmit)="pesquisar()">
+    <!--Two-way data binding-->
+    <input class="search-form__input" type="text" name="descricao" [(ngModel)]="descricao">
+    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>

@@ -1,0 +1,31 @@
+<h2 class="cart-title">Carrinho</h2>
+
+<!--Vamos utilizar a diretiva *ngIf" para que os produtos apenas apareçam quando a minha lista de itens de carrinho for maior o que 0 (ou seja, quando houver alguma coisa dentro da minha lista de carrinhos)-->
+<div *ngIf="itensCarrinho.length > 0; else semProduto">
+    <ul>
+        <!--Vamos fazer com que os itens do carrinho apareçam no nosso template. Para isso vamos utilizar a diretiva "*ngFor"-->
+        <li *ngFor="let itemCarrinho of itensCarrinho">
+            <!--Property binding-->
+            <img [src]="itemCarrinho.imagem"/>
+            <!--Interpolação de texto-->
+            <p>{{ itemCarrinho.descricao }}</p>
+            <!--Interpolação de texto acompanhado de um "pipe" para que apareça em formato da moeda brasileira-->
+            <p>Preço: {{ itemCarrinho.preco | currency: "BRL" }}</p>
+            <label>
+                Quantidade:
+                <!--Two-way data binding. Vou fazer também um "event binding" com o evento "change" para dizer que, quando o valor do "input" for setado pelo usuário (ou seja, quando houver mudança no input), será chamada a execução do método "calcularTotal"-->
+                <input type="number" [(ngModel)]="itemCarrinho.quantidade" (change)="calcularTotal()">
+            </label>
+            <!--Event binding para executar o método "removerProdutoCarrinho()"-->
+            <button class="remove-button" (click)="removerProdutoCarrinho(itemCarrinho.id)"><i class="fa-solid fa-xmark"></i></button>
+        </li>
+    </ul>
+    <!--Interpolação de texto acompanhado de um "pipe" para que apareça em formato da moeda brasileira-->
+    <h2 class="cart-total">Total: {{ total | currency: "BRL" }}</h2>
+
+    <!--Event binding com o evento "click" para que execute o método "comprar()"-->
+    <button class="buy-button" (click)="comprar()">Comprar</button>
+</div>
+
+<!--Vamos criar um componente que servirá para um atributo da diretiva "*ngIf" que criamos no começo do nosso código. Para ligar esse componente a um atributo da nossa diretiva, nós vamos utilizar o "#" seguido do nome do atributo da diretiva que estamos atrelando a esse componente -->
+<ng-template #semProduto>Nenhum produto foi adicionado ao carrinho</ng-template>

@@ -1,0 +1,7 @@
+
+/*Vamos dar espaçamento nas laterais dos nossos componentes que estão no projeto principal*/
+.container{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
